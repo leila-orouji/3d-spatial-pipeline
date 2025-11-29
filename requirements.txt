@@ -1,0 +1,7 @@
+boto3>=1.26
+numpy>=1.23
+pandas>=1.5
+open3d>=0.18
+scikit-learn>=1.1
+laspy>=2.0
+tqdm>=4.64
