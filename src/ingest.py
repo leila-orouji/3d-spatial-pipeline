@@ -1,9 +1,14 @@
 # src/ingest.py
 
 import argparse
-import boto3
+import boto3                
 import os
 from utils import ensure_trailing_slash
+import json
+import hashlib
+from datetime import datetime
+
+
 
 def upload_raw(bucket, folder):
     s3 = boto3.client("s3")

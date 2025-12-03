@@ -3,7 +3,10 @@
 import argparse
 import boto3
 import tempfile
+# tempfile Provides functions to create temporary files or directories.
+# These files/directories are usually automatically deleted after use.
 import open3d as o3d
+# Provides high-level functions to read, write, transform, and visualize .ply, .pcd, .obj, and more
 import numpy as np
 import json
 from utils import ensure_json_serializable
@@ -30,6 +33,8 @@ def process_s3(bucket, key):
     with tempfile.NamedTemporaryFile(suffix=".ply") as tmp:
         s3.download_file(bucket, key, tmp.name)
         pcd = o3d.io.read_point_cloud(tmp.name)
+        # To visualize 3D data:        
+        o3d.visualization.draw_geometries([pcd])
 
         features = extract_features_from_pointcloud(pcd)
 
