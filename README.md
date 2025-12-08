@@ -15,8 +15,43 @@ A small, realistic pipeline to ingest 3D spatial (point-cloud) data, preprocess 
 ---
 
 ## Recommended S3 bucket structure
-s3://bucket/raw/point_clouds/
-s3://bucket/raw/meshes/
-s3://bucket/raw/voxels/
-s3://bucket/raw/scenes/
+- s3://bucket/raw/point_clouds/
+- s3://bucket/raw/meshes/
+- s3://bucket/raw/voxels/
+- s3://bucket/raw/scenes/
 
+
+ # 3D Spatial Data Pipeline on Azure for Digital Twin
+
+## Pipeline Diagram
+
+            Local Folder  
+               → azcopy sync  
+               → Blob Storage (raw/)  
+                   → Blob Trigger  
+                       → Azure Function  
+                           → Process file  
+                           → Write to Blob Storage (processed/)  
+                           → Write metadata to Azure SQL Database
+## Features / Deliverables
+
+              → Azure Function (triggered when new file arrives)  
+               In AWS → S3 
+               In Azure → Azure Blob Storage 
+
+               → Upload data from local machine automatically 
+
+                Equivalent of aws s3 sync, use AzCopy (recommended) 
+
+               → Azure VM / Azure Compute Instance (optional heavy processing) 
+                 Azure Virtual Machine is Equivalent of EC2. 
+                 Azure Container Instances or AKS is Equivalent of AWS Fargate or ECS/Kubernetes. 
+
+               → Azure Blob Storage (processed) 
+
+               → Azure SQL Database (store metadata)  
+                Equivalent of AWS RDS. 
+
+  
+
+  
