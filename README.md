@@ -15,3 +15,8 @@ A small, realistic pipeline to ingest 3D spatial (point-cloud) data, preprocess 
 ---
 
 ## Recommended S3 bucket structure
+s3://bucket/raw/point_clouds/
+s3://bucket/raw/meshes/
+s3://bucket/raw/voxels/
+s3://bucket/raw/scenes/
+
